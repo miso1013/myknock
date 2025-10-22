@@ -16,22 +16,27 @@
         body {
             font-family: 'Pretendard', -apple-system, sans-serif;
             background: #FFF5F5;
-            width: 393px;
-            height: 852px;
+            width: 100%;
+            max-width: 393px;
+            min-height: 100vh;
             margin: 0 auto;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
+            -webkit-overflow-scrolling: touch;
         }
 
         .page {
             display: none;
             width: 100%;
-            height: 100%;
+            min-height: 100vh;
             background: white;
             overflow-y: auto;
+            overflow-x: hidden;
             position: absolute;
             top: 0;
             left: 0;
+            -webkit-overflow-scrolling: touch;
         }
 
         .page.active {
@@ -763,8 +768,8 @@
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            padding: 0 12px 16px;
+            gap: 0px;
+            padding: 0 4px 16px;
         }
 
         .calendar-day {
@@ -772,15 +777,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
-            border-radius: 5px;
+            font-size: 11px;
+            border-radius: 3px;
             cursor: pointer;
         }
 
         .calendar-day.header {
             font-weight: 600;
             color: #666;
-            font-size: 12px;
+            font-size: 10px;
         }
 
         .calendar-day.event {
@@ -1167,9 +1172,11 @@
             display: none;
             position: fixed;
             top: 0;
-            left: 0;
-            width: 393px;
-            height: 852px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 393px;
+            height: 100vh;
             background: rgba(0,0,0,0.5);
             align-items: center;
             justify-content: center;
@@ -1185,8 +1192,9 @@
             border-radius: 5px;
             padding: 28px 24px;
             width: 320px;
-            max-height: 600px;
+            max-height: 90vh;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .modal-header {
@@ -1279,7 +1287,21 @@
 
         /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 0;
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #FFB4B6;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF5A5F;
         }
 
         /* Tab Buttons */
@@ -14822,21 +14844,21 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
                         <div class="checkbox"></div>
                         <span>정미소</span>
                     </div>
-                    <span class="member-badge active">추억함</span>
+                    <span class="member-badge active" id="misoMemoryBadge">추억장</span>
                 </div>
                 <div class="member-item">
                     <div class="member-info">
                         <div class="checkbox"></div>
                         <span>아빠</span>
                     </div>
-                    <span class="member-badge inactive">추억장 앞도</span>
+                    <span class="member-badge inactive" id="dadMemoryBadge" onclick="transferMemoryRole('dad')" style="cursor: pointer;">추억장 양도</span>
                 </div>
-                <div class="member-item">
+                <div class="member-item" id="momMemberItem">
                     <div class="member-info">
                         <div class="checkbox"></div>
                         <span>엄마</span>
                     </div>
-                    <span class="member-badge inactive">추억장 앞도</span>
+                    <span class="member-badge inactive" id="momMemoryBadge" onclick="transferMemoryRole('mom')" style="cursor: pointer;">추억장 양도</span>
                 </div>
             </div>
 
@@ -16547,13 +16569,13 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
             <p style="font-size: 14px; color: #666; font-weight: 400;">오늘은 어떤 추억을 남으실건가요?</p>
         </div>
 
-        <div style="padding: 20px; background: #FFF5F5; padding-bottom: 100px;">
+        <div style="padding: 20px; background: #FFF5F5; padding-bottom: 120px;">
             
             <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 16px;">
                 <p style="font-size: 13px; color: #999; margin-bottom: 20px; font-weight: 400;">나의 강훈과 추억노트는</p>
                 
                 <!-- First Row - 3개 -->
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px;">
                     <div class="memory-card" onclick="goToPage('audioPage')" style="text-align: center; cursor: pointer;">
                         <div style="width: 60px; height: 60px; margin: 0 auto 10px; background: linear-gradient(135deg, #FFE8E8 0%, #FFD6D7 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px;">
                             📝
@@ -16575,14 +16597,14 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
                 </div>
 
                 <!-- Second Row - 2개만 -->
-                <div style="display: flex; gap: 16px; justify-content: flex-start;">
-                    <div class="memory-card" onclick="goToPage('calendarPage')" style="text-align: center; cursor: pointer; width: calc((100% - 16px) / 3);">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                    <div class="memory-card" onclick="goToPage('calendarPage')" style="text-align: center; cursor: pointer;">
                         <div style="width: 60px; height: 60px; margin: 0 auto 10px; background: linear-gradient(135deg, #FFE8E8 0%, #FFD6D7 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px;">
                             📅
                         </div>
                         <div style="font-size: 12px; color: #666; font-weight: 500; line-height: 1.3;">캘린더</div>
                     </div>
-                    <div class="memory-card" onclick="goToPage('locationPage')" style="text-align: center; cursor: pointer; width: calc((100% - 16px) / 3);">
+                    <div class="memory-card" onclick="goToPage('locationPage')" style="text-align: center; cursor: pointer;">
                         <div style="width: 60px; height: 60px; margin: 0 auto 10px; background: linear-gradient(135deg, #FFE8E8 0%, #FFD6D7 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 26px;">
                             📍
                         </div>
@@ -16767,24 +16789,26 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
         }
 
         function addGrandmaToGroup() {
-            // Find the group members section
-            const groupMembersSection = document.querySelector('.modal-content .form-group:nth-child(2)');
+            // Find mom's member item
+            const momItem = document.getElementById('momMemberItem');
             
             // Create new member item
             const newMember = document.createElement('div');
             newMember.className = 'member-item';
+            newMember.id = 'grandmaMemberItem';
             newMember.innerHTML = `
                 <div class="member-info">
                     <div class="checkbox"></div>
                     <span>할머니</span>
                 </div>
-                <span class="member-badge inactive">추억장 앞도</span>
+                <span class="member-badge inactive" id="grandmaMemoryBadge" onclick="transferMemoryRole('grandma')" style="cursor: pointer;">추억장 양도</span>
             `;
             
-            // Add to group
-            groupMembersSection.appendChild(newMember);
+            // Insert after mom
+            momItem.parentNode.insertBefore(newMember, momItem.nextSibling);
             
             // Update count
+            const groupMembersSection = document.querySelector('.modal-content .form-group:nth-child(2)');
             const label = groupMembersSection.querySelector('.form-label');
             label.textContent = '그룹 인연 (4명)';
             
@@ -16793,6 +16817,78 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
             
             // Clear search
             document.getElementById('groupSearch').value = '';
+        }
+
+        function transferMemoryRole(newOwner) {
+            // Get current memory owner badge
+            const currentOwnerBadge = document.getElementById('misoMemoryBadge');
+            
+            // Get new owner badge
+            let newOwnerBadge;
+            if (newOwner === 'dad') {
+                newOwnerBadge = document.getElementById('dadMemoryBadge');
+            } else if (newOwner === 'mom') {
+                newOwnerBadge = document.getElementById('momMemoryBadge');
+            } else if (newOwner === 'grandma') {
+                newOwnerBadge = document.getElementById('grandmaMemoryBadge');
+            }
+            
+            if (!newOwnerBadge) return;
+            
+            // Change current owner to 추억함 양도
+            currentOwnerBadge.textContent = '추억함 양도';
+            currentOwnerBadge.classList.remove('active');
+            currentOwnerBadge.classList.add('inactive');
+            currentOwnerBadge.style.cursor = 'pointer';
+            currentOwnerBadge.onclick = function() {
+                restoreMemoryRole();
+            };
+            
+            // Change new owner to 추억장
+            newOwnerBadge.textContent = '추억장';
+            newOwnerBadge.classList.remove('inactive');
+            newOwnerBadge.classList.add('active');
+            newOwnerBadge.style.cursor = 'default';
+            newOwnerBadge.onclick = null;
+            
+            // Update current owner ID
+            currentOwnerBadge.id = 'previousOwnerBadge';
+            newOwnerBadge.id = 'misoMemoryBadge';
+        }
+
+        function restoreMemoryRole() {
+            // Get previous owner badge
+            const previousOwnerBadge = document.getElementById('previousOwnerBadge');
+            const currentOwnerBadge = document.getElementById('misoMemoryBadge');
+            
+            if (!previousOwnerBadge || !currentOwnerBadge) return;
+            
+            // Change current owner to 추억장 양도
+            currentOwnerBadge.textContent = '추억장 양도';
+            currentOwnerBadge.classList.remove('active');
+            currentOwnerBadge.classList.add('inactive');
+            currentOwnerBadge.style.cursor = 'pointer';
+            
+            // Determine which onclick to assign
+            const currentOwnerName = currentOwnerBadge.parentElement.querySelector('.member-info span').textContent;
+            if (currentOwnerName === '아빠') {
+                currentOwnerBadge.id = 'dadMemoryBadge';
+                currentOwnerBadge.onclick = function() { transferMemoryRole('dad'); };
+            } else if (currentOwnerName === '엄마') {
+                currentOwnerBadge.id = 'momMemoryBadge';
+                currentOwnerBadge.onclick = function() { transferMemoryRole('mom'); };
+            } else if (currentOwnerName === '할머니') {
+                currentOwnerBadge.id = 'grandmaMemoryBadge';
+                currentOwnerBadge.onclick = function() { transferMemoryRole('grandma'); };
+            }
+            
+            // Restore previous owner to 추억장
+            previousOwnerBadge.textContent = '추억장';
+            previousOwnerBadge.classList.remove('inactive');
+            previousOwnerBadge.classList.add('active');
+            previousOwnerBadge.style.cursor = 'default';
+            previousOwnerBadge.onclick = null;
+            previousOwnerBadge.id = 'misoMemoryBadge';
         }
 
         function toggleShare(isYes) {
