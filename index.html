@@ -14376,29 +14376,31 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
             <div class="header-title">소리가 있어</div>
         </div>
 
-        <div class="page-header">
-            <div class="page-header-content">
-                <div class="page-header-text">
-                    <h2><span class="name">정미소</span> 님</h2>
-                    <p>소중한 목소리를<br>들려주세요</p>
+        <div class="page-header" style="padding: 30px 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div style="text-align: center; flex: 1;">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #FFE8E8 0%, #FFD6D7 100%); margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👤</div>
+                    <div style="font-size: 16px; font-weight: 600; color: #000;">정미소</div>
                 </div>
-                <div class="page-header-icon">🎤</div>
+                <div style="font-size: 24px; margin: 0 20px;">💕</div>
+                <div style="text-align: center; flex: 1;">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #E8F4FF 0%, #D6E9FF 100%); margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👤</div>
+                    <div style="font-size: 16px; font-weight: 600; color: #000;">강훈</div>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 14px; color: #666; line-height: 1.5; margin-top: 10px;">시간이 흘러도 우리의 목소리는 여기에 머물러요.</p>
+        </div>
+
+        <div style="display: flex; border-bottom: 1px solid #f0f0f0; background: white;">
+            <div class="audio-tab active" onclick="switchAudioTab('received')" style="flex: 1; text-align: center; padding: 16px; font-size: 15px; font-weight: 600; color: #FF5A5F; border-bottom: 2px solid #FF5A5F; cursor: pointer; transition: all 0.3s;">
+                받은 음성함
+            </div>
+            <div class="audio-tab" onclick="switchAudioTab('sent')" style="flex: 1; text-align: center; padding: 16px; font-size: 15px; font-weight: 600; color: #999; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.3s;">
+                보낸 음성함
             </div>
         </div>
 
-        <div class="action-bar">
-            <button class="action-btn">+ 녹음하기</button>
-            <button class="action-btn">음성 보내기</button>
-        </div>
-
-        <div class="search-bar">
-            <div class="search-wrapper">
-                <input type="text" class="search-input" placeholder="음성 검색" id="audioSearch" oninput="searchAudio()">
-                <span class="search-icon">🔍</span>
-            </div>
-        </div>
-
-        <div class="content">
+        <div class="content" style="flex: 1; overflow-y: auto; padding-bottom: 150px;">
             <div class="audio-list" id="audioList">
                 <div class="audio-item" data-name="생일축하">
                     <div class="audio-avatar">🎂</div>
@@ -14424,6 +14426,17 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
                     </div>
                     <button class="play-btn">▶</button>
                 </div>
+            </div>
+        </div>
+
+        <div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 393px; background: white; border-top: 1px solid #f0f0f0; padding: 12px 20px; z-index: 100;">
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                <button style="flex: 1; padding: 12px; background: #FF5A5F; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer;">+ 녹음하기</button>
+                <button style="flex: 1; padding: 12px; background: #FFE8E8; color: #FF5A5F; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer;">음성 보내기</button>
+            </div>
+            <div style="position: relative;">
+                <input type="text" placeholder="음성 검색" id="audioSearch" oninput="searchAudio()" style="width: 100%; padding: 10px 40px 10px 16px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; outline: none;">
+                <span style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 16px;">🔍</span>
             </div>
         </div>
 
@@ -16954,7 +16967,7 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
         function searchAudio() {
             const searchTerm = document.getElementById('audioSearch').value.toLowerCase();
             const items = document.querySelectorAll('#audioList .audio-item');
-            
+
             items.forEach(item => {
                 const name = item.getAttribute('data-name').toLowerCase();
                 if (name.includes(searchTerm)) {
@@ -16963,6 +16976,25 @@ Qi4BPA4wgFwdeVRKnkcdAKL4E0j/QnzXjZaNr3UgeKnx9PxhdLmJFHJwog/PUzG7UKmAMHaVzqqu
                     item.style.display = 'none';
                 }
             });
+        }
+
+        function switchAudioTab(tabType) {
+            const tabs = document.querySelectorAll('.audio-tab');
+            tabs.forEach(tab => {
+                tab.style.color = '#999';
+                tab.style.borderBottom = '2px solid transparent';
+                tab.classList.remove('active');
+            });
+
+            if (tabType === 'received') {
+                tabs[0].style.color = '#FF5A5F';
+                tabs[0].style.borderBottom = '2px solid #FF5A5F';
+                tabs[0].classList.add('active');
+            } else {
+                tabs[1].style.color = '#FF5A5F';
+                tabs[1].style.borderBottom = '2px solid #FF5A5F';
+                tabs[1].classList.add('active');
+            }
         }
 
         function searchLetters() {
