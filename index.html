@@ -2861,8 +2861,12 @@ searchConnections = function() {
             // 양옆 이미지 프리뷰 업데이트
             updatePhotoPreview();
 
-            // 터치 이벤트 리스너 추가
+            // 터치 이벤트 리스너 추가 (기존 리스너 제거 후 재등록)
             const container = document.getElementById('photoDetailContainer');
+            container.removeEventListener('touchstart', handleTouchStart);
+            container.removeEventListener('touchmove', handleTouchMove);
+            container.removeEventListener('touchend', handleTouchEnd);
+
             container.addEventListener('touchstart', handleTouchStart, { passive: false });
             container.addEventListener('touchmove', handleTouchMove, { passive: false });
             container.addEventListener('touchend', handleTouchEnd, { passive: false });
@@ -2929,13 +2933,20 @@ searchConnections = function() {
                 isPinching = false;
                 const img = document.getElementById('photoDetailImage');
                 img.style.transition = 'transform 0.3s';
-            } else if (scale === 1) {
+            } else if (scale === 1 && startX !== 0) {
+                // 터치 종료 시점의 위치 가져오기
+                if (e.changedTouches && e.changedTouches.length > 0) {
+                    currentX = e.changedTouches[0].clientX;
+                    currentY = e.changedTouches[0].clientY;
+                }
+
                 // 스와이프 방향 감지
                 const diffX = currentX - startX;
                 const diffY = currentY - startY;
 
-                // 가로 스와이프가 세로 스와이프보다 크고, 최소 50px 이상 움직였을 때
-                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                // 가로 스와이프가 세로 스와이프보다 크고, 최소 30px 이상 움직였을 때
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    e.preventDefault();
                     if (diffX > 0) {
                         // 오른쪽 스와이프 - 이전 사진
                         showPreviousPhoto();
@@ -2946,10 +2957,12 @@ searchConnections = function() {
                 }
             }
 
+            // 초기화
             startX = 0;
             startY = 0;
             currentX = 0;
             currentY = 0;
+            isPinching = false;
         }
 
         function showNextPhoto() {
