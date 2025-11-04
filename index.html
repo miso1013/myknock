@@ -53,6 +53,464 @@
     font-weight: 500;
 }
 
+
+/* ========================================
+   사진이 있어 페이지 스타일
+   ======================================== */
+
+/* 상단 배너 (프로필 + 텍스트) */
+.photo-header-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    background: white;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.photo-header-content {
+    flex: 1;
+}
+
+.photo-header-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.photo-header-title .highlight {
+    color: #FF7474;
+}
+
+.photo-header-stats {
+    font-size: 14px;
+    color: #666;
+}
+
+.photo-header-stats .number {
+    color: #FF7474;
+    font-weight: 700;
+}
+
+.photo-header-profile {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+.photo-header-profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 검색바 */
+.photo-search-bar {
+    padding: 16px 20px;
+    background: white;
+}
+
+.photo-search-input-wrapper {
+    position: relative;
+}
+
+.photo-search-input {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    border: 2px solid #FFB4B6;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.photo-search-input::placeholder {
+    color: #ccc;
+}
+
+.photo-search-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFB4B6;
+    font-size: 18px;
+}
+
+/* 탭 버튼 */
+.photo-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    background: white;
+    border-bottom: 1px solid #f5f5f5;
+    gap: 40px;
+}
+
+.photo-tab-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+    padding: 8px;
+}
+
+.photo-tab-btn.active {
+    opacity: 1;
+    color: #FF7474;
+}
+
+.photo-tab-divider {
+    width: 1px;
+    height: 24px;
+    background: #e0e0e0;
+}
+
+/* 섹션 타이틀 */
+.photo-section {
+    padding: 24px 20px;
+    background: #fafafa;
+}
+
+.photo-section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FF7474;
+    margin-bottom: 16px;
+}
+
+.photo-section.white-bg {
+    background: white;
+}
+
+/* 사진 그리드 */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+}
+
+.photo-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.photo-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-item-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+
+.video-play-icon {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+/* 날짜 라벨 */
+.photo-date-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+/* 하이라이트 배너 */
+.highlight-banner {
+    background: linear-gradient(135deg, #FFF5F5 0%, #FFE5E5 100%);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.highlight-banner-text {
+    flex: 1;
+}
+
+.highlight-banner-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FF7474;
+    line-height: 1.6;
+}
+
+.highlight-banner-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 64px;
+}
+
+/* 하이라이트 그리드 (불규칙) */
+.highlight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.highlight-item-small {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.highlight-item-small .photo-item {
+    flex: 1;
+}
+
+.highlight-item-large {
+    grid-column: 2;
+    grid-row: span 2;
+    aspect-ratio: 0.75;
+}
+
+/* 플로팅 버튼 */
+.photo-floating-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+}
+
+.photo-floating-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: #FF7474;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 116, 116, 0.4);
+    transition: all 0.3s ease;
+}
+
+.photo-floating-btn:active {
+    transform: scale(0.95);
+}
+
+.photo-floating-btn.secondary {
+    background: white;
+    color: #FF7474;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 사진 추가 페이지 */
+.add-photo-section {
+    padding: 24px 20px;
+    background: white;
+    border-bottom: 8px solid #f5f5f5;
+}
+
+.add-photo-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.add-photo-subtitle {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 16px;
+}
+
+.add-photo-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.add-photo-input::placeholder {
+    color: #ccc;
+}
+
+.add-photo-result {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #FFF5F5;
+    border-radius: 8px;
+    color: #FF7474;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 계절/공유 설정 버튼 그룹 */
+.button-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.option-btn {
+    padding: 10px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f5f5f5;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-btn.active {
+    background: #FFF0F0;
+    border-color: #FF7474;
+    color: #FF7474;
+}
+
+/* 사진 업로드 박스 */
+.upload-box {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 2px dashed #FFB4B6;
+    border-radius: 12px;
+    background: #FFF5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+    background: #FFE5E5;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #FFB4B6;
+}
+
+/* 업로드된 사진 썸네일 */
+.uploaded-photos {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.uploaded-photo-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.uploaded-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-photo-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 메모 입력 */
+.memo-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+}
+
+.memo-textarea::placeholder {
+    color: #ccc;
+}
+
+/* 저장 버튼 */
+.save-btn {
+    width: 100%;
+    padding: 16px;
+    background: #FF7474;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 24px 0 100px 0;
+    transition: all 0.3s ease;
+}
+
+.save-btn:active {
+    background: #FF6060;
+}
+
+
 /* 메모리 메뉴 카드 스타일 (Figma 그리드: 8columns, Margin:0, Gutter:20) */
 .memory-menu-grid {
     display: grid;
@@ -457,7 +915,232 @@
 </div>
 </div>
 </div>
-</div></div><div class="page" id="photoPage"><div class="status-bar"><span>10:13</span><div class="status-icons"><span>📶</span><span>📡</span><span>🔋</span></div></div><div class="header"><button class="back-btn" onclick="goToPage('memoryPage')">‹</button><div class="header-title">사진이 있어</div></div><div class="page-header"><div class="page-header-content"><div class="page-header-text"><h2><span class="name">강훈</span> 님과</h2><p>사진과 동영상에서<br>행복했던 느낌이 느껴져요 😊</p></div></div></div><div class="stats-bar"><div class="stats-item">사진 <span>1,000</span>개 | 동영상 <span>389</span>개</div></div><div class="search-bar"><div class="search-wrapper"><input type="text" class="search-input" placeholder="사진 검색" id="photoSearch" oninput="searchPhotos()"><span class="search-icon">🔍</span></div></div><div class="tab-buttons"><button class="tab-btn active">전체</button><button class="tab-btn">사진</button><button class="tab-btn">동영상</button><button class="tab-btn">좋아요</button></div><div class="content"><div class="photo-grid" id="photoGrid"><div class="photo-item favorite" data-name="여행"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="카페"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="공원"><img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item favorite" data-name="바다"><img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="산"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="음식"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=400&fit=crop" alt="사진"></div></div></div><div class="bottom-nav">
+</div></div><div class="page" id="photoPage" style="padding-bottom: 83px; overflow-y: auto;">
+<!-- 상태바 -->
+<div class="status-bar">
+<span>10:13</span>
+<div class="status-icons">
+<span>📶</span>
+<span>📡</span>
+<span>🔋</span>
+</div>
+</div>
+
+<!-- 헤더 -->
+<div class="header">
+<button class="back-btn" onclick="goToPage('memoryPage')" style="font-weight: 300;">‹</button>
+<span class="header-title">사진이 있어</span>
+</div>
+
+<!-- 상단 배너 (프로필 + 텍스트) -->
+<div class="photo-header-banner">
+<div class="photo-header-content">
+<div class="photo-header-title">
+<span class="highlight">강훈</span> 님과의<br>
+사진과 동영상에서<br>
+행복함이 느껴지요! 🍀
+</div>
+<div class="photo-header-stats">
+사진 <span class="number">1,000</span> 개 | 동영상 <span class="number">389</span> 개
+</div>
+</div>
+<div class="photo-header-profile">
+<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABkAGQDASIAAhEBAxEB/8QAHQAAAgIDAQEBAAAAAAAAAAAABQYEBwIDCAEACf/EAD8QAAIBAwMCBAQDBgQEBwEAAAECAwQFEQAGIRIxQQcTUWEicYGRMqGxCBQjQsHRM1Lh8BVicvEWJDVDU4KS/8oADAMBAAIRAxEAPwDs3MZKhh8ZYymUtw06VSDJNJM4VEQf0JOup++8R9y93w23" alt="강훈">
+</div>
+</div>
+
+<!-- 검색바 -->
+<div class="photo-search-bar">
+<div class="photo-search-input-wrapper">
+<input type="text" class="photo-search-input" placeholder="">
+<span class="photo-search-icon">🔍</span>
+</div>
+</div>
+
+<!-- 탭 버튼 -->
+<div class="photo-tabs">
+<button class="photo-tab-btn active" onclick="switchPhotoTab('photos')" id="tab-photos">📷</button>
+<div class="photo-tab-divider"></div>
+<button class="photo-tab-btn" onclick="switchPhotoTab('videos')" id="tab-videos">📹</button>
+<div class="photo-tab-divider"></div>
+<button class="photo-tab-btn" onclick="switchPhotoTab('favorites')" id="tab-favorites">♥</button>
+</div>
+
+<!-- 사진 탭 콘텐츠 -->
+<div id="photo-tab-photos" class="photo-tab-content">
+<!-- 제일 좋아하는 사진 -->
+<div class="photo-section">
+<div class="photo-section-title">제일 좋아하는 사진</div>
+<div class="photo-grid">
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="">
+<div class="photo-item-icon">♥</div>
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=400" alt="">
+<div class="photo-item-icon">♥</div>
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400" alt="">
+<div class="photo-item-icon">♥</div>
+</div>
+</div>
+</div>
+
+<!-- 날짜별 사진 -->
+<div class="photo-section white-bg">
+<div class="photo-date-label">2025년 1월 16일</div>
+<div class="photo-grid">
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400" alt="">
+</div>
+</div>
+</div>
+
+<div class="photo-section white-bg">
+<div class="photo-date-label">2024년 11월 28일</div>
+<div class="photo-grid">
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400" alt="">
+</div>
+</div>
+</div>
+</div>
+
+<!-- 하이라이트 탭 콘텐츠 -->
+<div id="photo-tab-highlights" class="photo-tab-content" style="display: none;">
+<div class="photo-section">
+<!-- 배너 -->
+<div class="highlight-banner">
+<div class="highlight-banner-text">
+<div class="highlight-banner-title">
+정미소님과 강훈님이<br>
+제일 많이 조회한 사진과 영상으로<br>
+하이라이트를 만들어 보았어요!
+</div>
+</div>
+<div class="highlight-banner-icon">🎬</div>
+</div>
+
+<!-- 사진 하이라이트 -->
+<div class="photo-section-title">사진 하이라이트</div>
+<div class="highlight-grid">
+<div class="highlight-item-small">
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="">
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=400" alt="">
+</div>
+</div>
+<div class="photo-item highlight-item-large">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400" alt="">
+</div>
+</div>
+
+<!-- 영상 하이라이트 -->
+<div class="photo-section-title" style="margin-top: 32px;">영상 하이라이트</div>
+<div class="photo-item" style="aspect-ratio: 0.75; max-width: 100%; border-radius: 16px; overflow: hidden; position: relative;">
+<img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600" alt="">
+<div class="video-play-icon">▶</div>
+<div style="position: absolute; bottom: 16px; left: 16px; color: white; font-size: 16px; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">2025년 4월 13일</div>
+</div>
+</div>
+</div>
+
+<!-- 동영상 탭 콘텐츠 -->
+<div id="photo-tab-videos-content" class="photo-tab-content" style="display: none;">
+<div class="photo-section">
+<div class="photo-section-title">제일 좋아하는 영상</div>
+<div class="photo-grid-2col">
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="">
+<div class="video-play-icon">▶</div>
+<div class="photo-item-icon">♥</div>
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=400" alt="">
+<div class="video-play-icon">▶</div>
+<div class="photo-item-icon">♥</div>
+</div>
+</div>
+</div>
+
+<div class="photo-section white-bg">
+<div class="photo-date-label">2025년 4월 13일</div>
+<div class="photo-grid-2col">
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400" alt="">
+<div class="video-play-icon">▶</div>
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=400" alt="">
+<div class="video-play-icon">▶</div>
+</div>
+</div>
+</div>
+
+<div class="photo-section white-bg">
+<div class="photo-date-label">2025년 3월 28일</div>
+<div class="photo-item" style="width: 50%; margin: 0;">
+<img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400" alt="">
+<div class="video-play-icon">▶</div>
+</div>
+</div>
+
+<div class="photo-section white-bg">
+<div class="photo-date-label">2025년 1월 1일</div>
+<div class="photo-grid-2col">
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400" alt="">
+<div class="video-play-icon">▶</div>
+</div>
+<div class="photo-item">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="">
+<div class="video-play-icon">▶</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 플로팅 버튼 -->
+<div class="photo-floating-buttons">
+<button class="photo-floating-btn secondary" onclick="alert('필터')">🔽</button>
+<button class="photo-floating-btn" onclick="goToPage('addPhotoPage')">+</button>
+</div>
+
+<!-- 하단 네비게이션 -->
+<div class="bottom-nav">
 <div class="nav-item" onclick="goToPage('mainPage')">
 <div class="nav-icon">🏠</div>
 <div>마이노크홈</div>
@@ -472,7 +1155,112 @@
 </div>
 </div>
 </div>
-</div></div><div class="page" id="momPhotoPage"><div class="status-bar"><span>10:13</span><div class="status-icons"><span>📶</span><span>📡</span><span>🔋</span></div></div><div class="header"><button class="back-btn" onclick="goToPage('mainPage')">‹</button><div class="header-title">사진이 있어</div></div><div class="page-header"><div class="page-header-content"><div class="page-header-text"><h2><span class="name">엄마</span> 님과</h2><p>사진과 동영상에서<br>행복했던 느낌이 느껴져요 😊</p></div></div></div><div class="stats-bar"><div class="stats-item">사진 <span>850</span>개 | 동영상 <span>295</span>개</div></div><div class="search-bar"><div class="search-wrapper"><input type="text" class="search-input" placeholder="사진 검색" id="momPhotoSearch" oninput="searchPhotos()"><span class="search-icon">🔍</span></div></div><div class="tab-buttons"><button class="tab-btn active">전체</button><button class="tab-btn">사진</button><button class="tab-btn">동영상</button><button class="tab-btn">좋아요</button></div><div class="content"><div class="photo-grid" id="momPhotoGrid"><div class="photo-item favorite" data-name="가족모임"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="요리"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="꽃구경"><img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item favorite" data-name="산책"><img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="생일"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="집"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=400&fit=crop" alt="사진"></div></div></div><div class="bottom-nav">
+
+
+<div class="page" id="addPhotoPage" style="padding-bottom: 83px; overflow-y: auto;">
+<!-- 상태바 -->
+<div class="status-bar">
+<span>10:13</span>
+<div class="status-icons">
+<span>📶</span>
+<span>📡</span>
+<span>🔋</span>
+</div>
+</div>
+
+<!-- 헤더 -->
+<div class="header">
+<button class="back-btn" onclick="goToPage('photoPage')" style="font-weight: 300;">‹</button>
+<span class="header-title">사진이 있어</span>
+</div>
+
+<!-- 지역 설정 -->
+<div class="add-photo-section">
+<div class="add-photo-title">지역 설정</div>
+<div class="add-photo-subtitle">지역을 검색해주세요.</div>
+<div class="photo-search-input-wrapper">
+<input type="text" class="add-photo-input" placeholder="지역을 검색해주세요." onkeyup="this.nextElementSibling.style.display = this.value ? 'block' : 'none'">
+<div class="add-photo-result" style="display: none;">서울특별시, 송파구</div>
+</div>
+</div>
+
+<!-- 계절 설정 -->
+<div class="add-photo-section">
+<div class="add-photo-title">계절 설정</div>
+<div class="button-group">
+<button class="option-btn" onclick="toggleOption(this)">봄</button>
+<button class="option-btn" onclick="toggleOption(this)">여름</button>
+<button class="option-btn" onclick="toggleOption(this)">가을</button>
+<button class="option-btn active" onclick="toggleOption(this)">겨울</button>
+</div>
+</div>
+
+<!-- 공유 설정 -->
+<div class="add-photo-section">
+<div class="add-photo-title">공유 설정</div>
+<div class="button-group">
+<button class="option-btn active" onclick="toggleOption(this)">선택공유</button>
+<button class="option-btn" onclick="toggleOption(this)">비공개</button>
+<button class="option-btn" onclick="toggleOption(this)">전체보기</button>
+</div>
+<div class="photo-search-input-wrapper" style="margin-top: 16px;">
+<input type="text" class="add-photo-input" placeholder="공유할 인연을 검색해주세요.">
+<span class="photo-search-icon">🔍</span>
+</div>
+</div>
+
+<!-- 사진/동영상 추가하기 -->
+<div class="add-photo-section">
+<div class="add-photo-title">사진 / 동영상 추가하기</div>
+<div class="add-photo-subtitle">추억을 사진이나 동영상으로 추가해주세요!</div>
+<div class="upload-box" onclick="alert('파일 선택')">
+<div class="upload-icon">+</div>
+</div>
+<div class="uploaded-photos">
+<div class="uploaded-photo-item">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=200" alt="">
+<button class="remove-photo-btn" onclick="this.parentElement.remove()">×</button>
+</div>
+<div class="uploaded-photo-item">
+<img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=200" alt="">
+<button class="remove-photo-btn" onclick="this.parentElement.remove()">×</button>
+</div>
+<div class="uploaded-photo-item">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200" alt="">
+<button class="remove-photo-btn" onclick="this.parentElement.remove()">×</button>
+</div>
+</div>
+</div>
+
+<!-- 메모 추가하기 -->
+<div class="add-photo-section">
+<div class="add-photo-title">메모 추가하기</div>
+<div class="add-photo-subtitle">장소에서 있던 추억을 메모로 남겨보세요!</div>
+<textarea class="memo-textarea" placeholder="내용을 입력해주세요."></textarea>
+</div>
+
+<!-- 저장하기 버튼 -->
+<button class="save-btn" onclick="alert('저장되었습니다!'); goToPage('photoPage');">저장하기</button>
+
+<!-- 하단 네비게이션 -->
+<div class="bottom-nav">
+<div class="nav-item" onclick="goToPage('mainPage')">
+<div class="nav-icon">🏠</div>
+<div>마이노크홈</div>
+</div>
+<div class="nav-item" onclick="goToPage('calendarPage')">
+<div class="nav-icon">📅</div>
+<div>일정 확인하기</div>
+</div>
+<div class="nav-item" onclick="goToPage('myPage')">
+<div class="nav-icon">👤</div>
+<div>마이페이지</div>
+</div>
+</div>
+</div>
+
+
+<div class="page" id="momPhotoPage"><div class="status-bar"><span>10:13</span><div class="status-icons"><span>📶</span><span>📡</span><span>🔋</span></div></div><div class="header"><button class="back-btn" onclick="goToPage('mainPage')">‹</button><div class="header-title">사진이 있어</div></div><div class="page-header"><div class="page-header-content"><div class="page-header-text"><h2><span class="name">엄마</span> 님과</h2><p>사진과 동영상에서<br>행복했던 느낌이 느껴져요 😊</p></div></div></div><div class="stats-bar"><div class="stats-item">사진 <span>850</span>개 | 동영상 <span>295</span>개</div></div><div class="search-bar"><div class="search-wrapper"><input type="text" class="search-input" placeholder="사진 검색" id="momPhotoSearch" oninput="searchPhotos()"><span class="search-icon">🔍</span></div></div><div class="tab-buttons"><button class="tab-btn active">전체</button><button class="tab-btn">사진</button><button class="tab-btn">동영상</button><button class="tab-btn">좋아요</button></div><div class="content"><div class="photo-grid" id="momPhotoGrid"><div class="photo-item favorite" data-name="가족모임"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="요리"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="꽃구경"><img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item favorite" data-name="산책"><img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="생일"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop" alt="사진"></div><div class="photo-item" data-name="집"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=400&fit=crop" alt="사진"></div></div></div><div class="bottom-nav">
 <div class="nav-item" onclick="goToPage('mainPage')">
 <div class="nav-icon">🏠</div>
 <div>마이노크홈</div>
@@ -1914,7 +2702,43 @@ searchConnections = function() {
 };
 
 // 마이페이지 섹션 토글 함수
-function toggleMypageSection(header) {
+
+        // 사진 탭 전환 함수
+        function switchPhotoTab(tabName) {
+            // 모든 탭 버튼 비활성화
+            document.querySelectorAll('.photo-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 모든 탭 콘텐츠 숨기기
+            document.querySelectorAll('.photo-tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // 선택된 탭 활성화
+            if (tabName === 'photos') {
+                document.getElementById('tab-photos').classList.add('active');
+                document.getElementById('photo-tab-photos').style.display = 'block';
+            } else if (tabName === 'videos') {
+                document.getElementById('tab-videos').classList.add('active');
+                document.getElementById('photo-tab-videos-content').style.display = 'block';
+            } else if (tabName === 'favorites') {
+                document.getElementById('tab-favorites').classList.add('active');
+                document.getElementById('photo-tab-highlights').style.display = 'block';
+            }
+        }
+        
+        // 옵션 버튼 토글 함수
+        function toggleOption(element) {
+            // 같은 그룹 내의 다른 버튼 비활성화
+            const siblings = element.parentElement.querySelectorAll('.option-btn');
+            siblings.forEach(btn => btn.classList.remove('active'));
+            
+            // 클릭된 버튼 활성화
+            element.classList.add('active');
+        }
+
+        function toggleMypageSection(header) {
     const content = header.nextElementSibling;
     const arrow = header.querySelector('.mypage-section-arrow');
     
